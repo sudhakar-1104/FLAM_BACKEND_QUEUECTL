@@ -1,7 +1,8 @@
 
 # queuectl - CLI Job Queue System
 
-`queuectl` is a robust, CLI-based background job queue system built in Python. It manages background jobs with multiple workers, handles automatic retries with exponential backoff, and maintains a Dead Letter Queue (DLQ) for permanently failed jobs.
+`queuectl` is a robust, CLI-based background job queue system built in Python. It manages background jobs with multiple workers, handles automatic retries with exponential backoff,
+and maintains a Dead Letter Queue (DLQ) for permanently failed jobs.
 
 This project includes persistent job storage, concurrent worker support, and several bonus features, including job priorities, command output logging, and execution metrics.
 
@@ -29,9 +30,8 @@ This project includes persistent job storage, concurrent worker support, and sev
 
 First, clone the repository to your local machine:
 ```bash
-git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
-cd queuectl_project
-
+git clone https://github.com/sudhakar-1104/FLAM_BACKEND_QUEUECTL.git
+cd FLAM_BACKEND_QUEUECTL
 
 Next, install the required Python dependencies:
 pip install -r requirements.txt
@@ -188,5 +188,6 @@ Check Robust Shutdown:
 
 del worker_*.log, .worker_pids
 ```
+
 
 
