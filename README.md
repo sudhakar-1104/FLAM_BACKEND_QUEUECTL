@@ -80,6 +80,7 @@ Example Output:
 ------------------------
   Active Workers: 3
 
+
 4.List Jobs (with Output) - List jobs in any state. Use the --output flag to see the saved command output.
 
 # List failed jobs
@@ -109,6 +110,7 @@ Example Output:
   Total Jobs Completed: 12
   Total Jobs Failed (DLQ): 3
   Avg. Completion Time: 1530.50 ms
+
 
 7.Config (Manage Settings) - Manage the system configuration.
 
@@ -177,7 +179,9 @@ python queuectl.py worker start --count 2
 4. Observe - Wait 15-20 seconds. Run python queuectl.py status and you will see:
 
 ->job-high move to completed.
+
 ->job-low move to processing, then completed.
+
 ->job-fail move to failed, then dead (DLQ).
 
 5. Stop Workers (Test Shutdown)
@@ -187,11 +191,15 @@ python queuectl.py worker stop
 6. Verify Results
 
 ->Check Output: python queuectl.py dlq list --output (You will see the error message for job-fail.)
-->Check Stats: python queuectl.py stats (You will see Completed: 2, Dead (DLQ): 1.)
-Check Robust Shutdown:
 
+->Check Stats: python queuectl.py stats (You will see Completed: 2, Dead (DLQ): 1.)
+
+Check Robust Shutdown:
+#check
 del worker_*.log, .worker_pids
+
 ```
+
 
 
 
