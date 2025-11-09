@@ -139,8 +139,10 @@ python queuectl.py config show
 
 3.Concurrency & Robustness:
 
-->Locking: To prevent "duplicate processing," the get_next_job function locks the database with BEGIN EXCLUSIVE TRANSACTION. This ensures only one worker can "claim" a job, making the system safe for concurrency.
-->Graceful Shutdown: The worker stop command now waits for all worker processes to exit. This solves the "zombie process" bug on Windows and ensures files (queue.db, logs) are unlocked properly.
+->Locking: To prevent "duplicate processing," the get_next_job function locks the database with BEGIN EXCLUSIVE TRANSACTION.
+ This ensures only one worker can "claim" a job, making the system safe for concurrency.
+->Graceful Shutdown: The worker stop command now waits for all worker processes to exit.
+ This solves the "zombie process" bug on Windows and ensures files (queue.db, logs) are unlocked properly.
 
 ```
 
@@ -186,4 +188,5 @@ Check Robust Shutdown:
 
 del worker_*.log, .worker_pids
 ```
+
 
