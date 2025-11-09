@@ -1,42 +1,32 @@
-﻿# FLAM_BACKEND_QUEUECTL
+# queuectl - CLI Job Queue System
 
-Queuectl is a powerful command-line tool built in Python that helps you manage background jobs with ease. It can run multiple workers at once, automatically retry failed jobs using exponential backoff, and move permanently failed ones to a Dead Letter Queue (DLQ) for later review.
+`queuectl` is a robust, CLI-based background job queue system built in Python. It manages background jobs with multiple workers, handles automatic retries with exponential backoff, and maintains a Dead Letter Queue (DLQ) for permanently failed jobs.
 
-With persistent job storage, support for concurrent processing, and handy extras like job prioritization, output logging, and performance metrics, Queuectl makes reliable and efficient background job management simple and intuitive.
+This project includes persistent job storage, concurrent worker support, and several bonus features, including job priorities, command output logging, and execution metrics.
 
--> Core Features
 
-1.Persistent Job Queue: Queuectl uses SQLite to store all jobs and their statuses, so nothing gets lost even if the system restarts.
+## 🚀 Core Features
 
-2.Multiple Worker Support: You can run several workers simultaneously, allowing multiple jobs to be processed in parallel.
+* **Persistent Job Queue:** Uses SQLite to ensure jobs and their states are not lost on restart.
+* **Multiple Worker Support:** Can run multiple worker processes in parallel to process jobs concurrently.
+* **Concurrency Safe:** Prevents race conditions by using database locking (`BEGIN EXCLUSIVE TRANSACTION`).
+* **Retry & Backoff:** Automatically retries failed jobs using an exponential backoff delay.
+* **Dead Letter Queue (DLQ):** Moves jobs to a `dead` state after all retries are exhausted.
+* **Robust Graceful Shutdown:** The `worker stop` command correctly waits for all workers to shut down, preventing "zombie" processes.
+* **Configurable:** Key settings (like `max_retries`) can be managed from the CLI.
 
-3.Concurrency Safety: Built-in safeguards prevent duplicate work and race conditions by using exclusive transactions for atomic job retrieval.
+## ✨ Bonus Features
 
-4.Retry and Backoff: Failed jobs are automatically retried with an exponential delay, giving each subsequent attempt a longer wait time before running again.
+* **Job Priority Queues:** Workers process higher-priority jobs first.
+* **Job Output Logging:** Captures the `stdout` and `stderr` of every job for easy debugging.
+* **Metrics & Stats:** A `stats` command provides historical data on job completion.
+* **Job Timeout Handling:** Workers will time out jobs that run for longer than 5 minutes.
 
-5.Dead Letter Queue (DLQ): Jobs that still fail after all retries are moved to a special queue for review and manual handling.
+---
 
-6.Graceful Shutdown: When stopped, workers finish their current tasks cleanly before shutting down, so there are no half-finished or “zombie” processes left behind.
+## ⚙️ Setup Instructions
 
-7.Configurable Settings: You can tweak key parameters—like retry limits or concurrency—from the command line, making Queuectl flexible and easy to control.
-
-->Bonus Features
-
-1.Job Priority Queues: You can assign priority levels to jobs so workers always pick up high-priority tasks first.
-
-2.Job Output Logging: Every job’s standard output and error messages are automatically captured and stored in the database, making debugging straightforward.
-
-3.Metrics and Statistics: A built-in stats command gives you useful insights like total jobs completed, failures, and average completion times.
-
-4.Job Timeout Handling: Workers automatically stop any job that runs too long—by default, anything that exceeds 5 minutes—to keep the system efficient and responsive.
-
-->Setup Instructions
-To run this project locally, follow these steps:
-
-1.Clone the Repository:
-
-git clone https://github.com/your-username/your-repo-name.git
+First, clone the repository to your local machine:
+```bash
+git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
 cd queuectl_project
-
-
-
