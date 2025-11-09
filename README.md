@@ -34,9 +34,13 @@ git clone https://github.com/sudhakar-1104/FLAM_BACKEND_QUEUECTL.git
 cd FLAM_BACKEND_QUEUECTL
 
 Next, install the required Python dependencies:
+
+#install
 pip install -r requirements.txt
 
 Finally, initialize the database by running any command. status is a good first command:
+
+#initialise
 python queuectl.py status
 
 ```
@@ -188,6 +192,7 @@ Check Robust Shutdown:
 
 del worker_*.log, .worker_pids
 ```
+
 
 
 
