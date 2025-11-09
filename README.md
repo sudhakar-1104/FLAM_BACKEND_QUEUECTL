@@ -76,6 +76,54 @@ Example Output:
 ------------------------
   Active Workers: 3
 
+4.List Jobs (with Output)
+List jobs in any state. Use the --output flag to see the saved command output.
+
+# List failed jobs
+python queuectl.py list --state failed
+
+# List completed jobs and see their output
+python queuectl.py list --state completed --output
+
+5.DLQ (Dead Letter Queue)
+Manage jobs that have permanently failed.
+
+# List all jobs in the DLQ
+python queuectl.py dlq list
+
+# See the final error output of a dead job
+python queuectl.py dlq list --output
+
+# Retry a job from the DLQ (resets attempts to 0)
+python queuectl.py dlq retry <job-id>
+
+6.Stats (Metrics)
+Check the historical metrics for your queue.
+
+python queuectl.py stats
+
+Example Output:
+
+--- Execution Stats ---
+  Total Jobs Completed: 12
+  Total Jobs Failed (DLQ): 3
+  Avg. Completion Time: 1530.50 ms
+
+7.Config (Manage Settings)
+Manage the system configuration.
+
+# Set the default max retries for new jobs
+python queuectl.py config set max_retries 2
+
+# Set the backoff base (e.g., 10^1s, 10^2s...)
+python queuectl.py config set backoff_base 10
+
+# View the current configuration
+python queuectl.py config show
+
+```
+
+
 
 
 
