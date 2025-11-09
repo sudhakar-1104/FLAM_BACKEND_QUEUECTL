@@ -7,7 +7,7 @@ and maintains a Dead Letter Queue (DLQ) for permanently failed jobs.
 This project includes persistent job storage, concurrent worker support, and several bonus features, including job priorities, command output logging, and execution metrics.
 
 
-## 🚀 Core Features
+##  Core Features
 
 * **Persistent Job Queue:** Uses SQLite to ensure jobs and their states are not lost on restart.
 * **Multiple Worker Support:** Can run multiple worker processes in parallel to process jobs concurrently.
@@ -17,7 +17,7 @@ This project includes persistent job storage, concurrent worker support, and sev
 * **Robust Graceful Shutdown:** The `worker stop` command correctly waits for all workers to shut down, preventing "zombie" processes.
 * **Configurable:** Key settings (like `max_retries`) can be managed from the CLI.
 
-## ✨ Bonus Features
+## Bonus Features
 
 * **Job Priority Queues:** Workers process higher-priority jobs first.
 * **Job Output Logging:** Captures the `stdout` and `stderr` of every job for easy debugging.
@@ -44,7 +44,8 @@ Finally, initialize the database by running any command. status is a good first 
 python queuectl.py status
 
 ```
-⌨️ CLI Command Reference
+## CLI Command Reference
+
 ```bash
 All commands are run using python queuectl.py.
 
@@ -199,6 +200,7 @@ Check Robust Shutdown:
 del worker_*.log, .worker_pids
 
 ```
+
 
 
 
