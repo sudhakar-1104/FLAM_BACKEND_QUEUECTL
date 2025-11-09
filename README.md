@@ -39,6 +39,43 @@ Finally, initialize the database by running any command. status is a good first 
 python queuectl.py status
 
 ```
+⌨️ CLI Command Reference
+```bash
+All commands are run using python queuectl.py.
+
+1.Enqueue (Add a Job)
+Adds a new job to the queue. The --priority flag is optional (default is 0).
+
+# Add a normal job (default priority 0)
+python queuectl.py enqueue -c "echo 'Normal job'" --id "job-1"
+
+# Add a high-priority job (runs first)
+python queuectl.py enqueue -c "echo 'HIGH PRIORITY'" --id "job-2" -p 10
+
+2.Workers (Start/Stop)
+Start or stop background workers.
+
+# Start 3 workers in the background
+python queuectl.py worker start --count 3
+
+# Stop all workers gracefully
+python queuectl.py worker stop
+
+3.Get a real-time summary of the queue.
+
+python queuectl.py status
+
+Example Output:
+
+--- Job Queue Status ---
+  Pending:    1
+  Processing: 2
+  Completed:  10
+  Failed:     1   
+  Dead (DLQ): 0
+------------------------
+  Active Workers: 3
+
 
 
 
