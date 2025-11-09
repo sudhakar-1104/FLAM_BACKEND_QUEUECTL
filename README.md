@@ -44,8 +44,7 @@ python queuectl.py status
 ```bash
 All commands are run using python queuectl.py.
 
-1.Enqueue (Add a Job)
-Adds a new job to the queue. The --priority flag is optional (default is 0).
+1.Enqueue (Add a Job) - Adds a new job to the queue. The --priority flag is optional (default is 0).
 
 # Add a normal job (default priority 0)
 python queuectl.py enqueue -c "echo 'Normal job'" --id "job-1"
@@ -53,8 +52,7 @@ python queuectl.py enqueue -c "echo 'Normal job'" --id "job-1"
 # Add a high-priority job (runs first)
 python queuectl.py enqueue -c "echo 'HIGH PRIORITY'" --id "job-2" -p 10
 
-2.Workers (Start/Stop)
-Start or stop background workers.
+2.Workers (Start/Stop) - Start or stop background workers.
 
 # Start 3 workers in the background
 python queuectl.py worker start --count 3
@@ -64,6 +62,7 @@ python queuectl.py worker stop
 
 3.Get a real-time summary of the queue.
 
+#status
 python queuectl.py status
 
 Example Output:
@@ -77,8 +76,7 @@ Example Output:
 ------------------------
   Active Workers: 3
 
-4.List Jobs (with Output)
-List jobs in any state. Use the --output flag to see the saved command output.
+4.List Jobs (with Output) - List jobs in any state. Use the --output flag to see the saved command output.
 
 # List failed jobs
 python queuectl.py list --state failed
@@ -86,8 +84,7 @@ python queuectl.py list --state failed
 # List completed jobs and see their output
 python queuectl.py list --state completed --output
 
-5.DLQ (Dead Letter Queue)
-Manage jobs that have permanently failed.
+5.DLQ (Dead Letter Queue) - Manage jobs that have permanently failed.
 
 # List all jobs in the DLQ
 python queuectl.py dlq list
@@ -98,8 +95,7 @@ python queuectl.py dlq list --output
 # Retry a job from the DLQ (resets attempts to 0)
 python queuectl.py dlq retry <job-id>
 
-6.Stats (Metrics)
-Check the historical metrics for your queue.
+6.Stats (Metrics) - Check the historical metrics for your queue.
 
 python queuectl.py stats
 
@@ -110,8 +106,7 @@ Example Output:
   Total Jobs Failed (DLQ): 3
   Avg. Completion Time: 1530.50 ms
 
-7.Config (Manage Settings)
-Manage the system configuration.
+7.Config (Manage Settings) - Manage the system configuration.
 
 # Set the default max retries for new jobs
 python queuectl.py config set max_retries 2
@@ -155,6 +150,7 @@ python queuectl.py config show
 
 1. Clean Up - (First, close any old terminals/editors to kill "zombie" processes.):
 
+#clean
 del worker_*.log, .worker_pids, queue.db, config.json
 
 2. Enqueue Test Jobs:
@@ -185,10 +181,9 @@ python queuectl.py worker stop
 6. Verify Results
 
 ->Check Output: python queuectl.py dlq list --output (You will see the error message for job-fail.)
-
 ->Check Stats: python queuectl.py stats (You will see Completed: 2, Dead (DLQ): 1.)
-
 Check Robust Shutdown:
 
 del worker_*.log, .worker_pids
 ```
+
